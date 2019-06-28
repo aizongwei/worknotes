@@ -1,0 +1,18 @@
+call:function(){
+    wx.makePhoneCall({
+      phoneNumber: '15087025351',
+      success:function(){
+        console.log("拨号成功");
+      },
+      fail:function(){
+        sonsole.log("拨号失败");
+      }
+    });
+  },
+
+
+
+<view class="phone" bindtap="call">
+      <image src="/zh_cjdianc/img/telephone.png"/>
+      <text>联系电话：18843162539</text>
+    </view>

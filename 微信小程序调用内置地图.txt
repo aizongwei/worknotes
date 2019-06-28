@@ -1,0 +1,22 @@
+searchAddress:function(){
+    wx.openLocation({
+      latitude: 22.71991,
+      longitude: 114.24779,
+      name: "深圳市龙岗区天成广场",
+      address: '深圳市龙岗区天成广场',
+    });
+  },
+
+<view class="address" bindtap="searchAddress">
+      <image src="/zh_cjdianc/img/gsdt.png"/>
+      <text>广东省深圳市龙岗区天成广场</text>
+    </view>
+
+
+获取经纬度:
+ wx.getLocation({
+      ss.setData({
+           longitude:res.longitude,
+           latitude:res.latitude,
+       }); 
+});

@@ -1,0 +1,5 @@
+{
+  "navigationBarTitleText": "µ± ÷∆ÏΩ¢µÍ",
+  "navigationBarBackgroundColor": "#ff6600",
+  "navigationBarTextStyle": "white"
+}

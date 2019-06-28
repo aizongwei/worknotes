@@ -1,0 +1,12 @@
+onShareAppMessage: function () {
+    return {
+      title: '当手旗舰店',//分享内容
+      path: 'zh_cjdianc/pages/Liar/shenheindex?xxx=xxx',//分享地址
+      imageUrl: '/zh_cjdianc/img/share.png',//分享图片
+      success: function(res){ }
+   }
+},
+
+
+<button open-type="share"><image src="/zh_cjdianc/img/personal/share.png"/></button>
+使用button元素 open-type="share" 实现分享
