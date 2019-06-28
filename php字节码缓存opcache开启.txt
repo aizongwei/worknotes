@@ -1,0 +1,16 @@
+[opcache]
+开关打开
+0为关闭，1为开启
+opcache.enable=1
+
+设置共享内存大小, 单位为：Mb
+opcache.memory_consumption=128
+
+如果启用，那么 OPcache 会每隔 opcache.revalidate_freq 设定的秒数 检查脚本是否更新。 如果禁用此选项，你必须使用 opcache_reset() 或者 opcache_invalidate() 函数来手动重置 OPcache，也可以 通过重启 Web 服务器来使文件系统更改生效。
+opcache.validate_timestamps=60
+
+在opcache使用软连接的情况下，会存在opcache没有被清除的情况.可以使用重启fastcgi来解决这个问题.
+
+
+在php.ini最后一行添加opcache.so 主要作用是用来引用opcache
+zend_extension="opcache.so"
