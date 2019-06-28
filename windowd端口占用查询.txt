@@ -1,0 +1,8 @@
+查看监听端口
+netstat -aon|findstr "49157"
+
+查看占用端口的进程  2720为端口49157的pid（进程id）
+tasklist|findstr "2720"
+
+结束进程
+taskkill /f /t /im Tencentdl.exe。
