@@ -1,0 +1,23 @@
+htmlspecialchars()函数把预定义的字符转换为 HTML 实体。
+htmlspecialchars_decode()函数把预定义的 HTML 实体转换为字符。
+
+$str = "This is some <b>bold</b> text.";
+echo htmlspecialchars($str);
+
+以上代码的 HTML 输出如下（查看源代码）：
+
+<!DOCTYPE html>
+<html>
+<body>
+This is some <b>bold</b> text.
+</body>
+</html>
+
+以上代码的浏览器输出：
+This is some <b>bold</b> text.
+
+$str = "This is some <b>bold</b> text.";
+echo htmlspecialchars_decode($str);
+
+以上代码的浏览器输出：
+This is some bold text.
