@@ -1,0 +1,2 @@
+array.push();向数组array末尾插入一个元素
+array.splice(start,length,str)向数组array中的start开始删除length个元素，第三个参数代表替换，如果只删除元素，第三个参数不传入。
