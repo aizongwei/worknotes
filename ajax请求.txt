@@ -1,0 +1,55 @@
+get请求
+wx.request({
+      url: app.globalData.pubSiteUrl + 'user-information/get-information', //url
+      method: 'GET', //请求方式
+      header: { 
+        'Content-Type': 'application/json',
+      },
+       data: {
+        activityId: options.id,  //参数
+      },
+      success: function(res) {
+        if (res.data.code == 1) {
+          _this.setData({
+            phone: res.data.user.phone,
+            password: res.data.user.password
+          })
+        }
+      },
+      fail: function() {
+        app.consoleLog("请求数据失败");
+      },
+      complete: function() {
+        // complete 
+      }
+    })
+
+
+post请求
+在小程序中，POST请求的Content-Type必须设置为：application/x-www-form-urlencoded
+
+var _this = this;
+wx.request({
+  url: app.globalData.pubSiteUrl + 'statistics/detail-activity', //上线的话必须是https，没有appId的本地请求貌似不受影响 
+  method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT 
+  header: {
+    'Content-Type': "application/x-www-form-urlencoded",
+    'Cookie': 'SESSION=' + wx.getStorageSync("sessionId")
+  }, // 设置请求的 header
+  data: {
+    activityId: options.id,
+  },
+  success: function(res) {
+    app.consoleLog("请求数据成功");
+    _this.setData({ // 设置页面列表的内容
+      activityDetail: res.data.activity
+    });
+    _this.getActivityDetials();
+  },
+  fail: function() {
+    app.consoleLog("请求数据失败");
+  },
+  complete: function() {
+    // complete 
+  }
+})
