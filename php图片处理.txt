@@ -1,0 +1,24 @@
+gd_info() 取得当前安装的 GD 库的信息
+getimagesize()	获取图像信息
+getimagesizefromstring()	获取图像信息
+image_type_to_extension()	获取图片后缀
+image_type_to_mime_type()	返回图像的 MIME 类型
+image2wbmp()	输出WBMP图片
+imageaffine()	返回经过仿射变换后的图像
+imageaffinematrixconcat()	连接两个矩阵
+imageaffinematrixget()	获取矩阵
+imagealphablending()	设定图像的混色模式
+imageantialias()	是否使用抗锯齿（antialias）功能
+imagearc()	画椭圆弧
+imagechar()	写出横向字符
+imagecharup()	垂直地画一个字符
+imagecolorallocate()	为一幅图像分配颜色
+imagecolorallocatealpha()	为一幅图像分配颜色和透明度
+imagecolorat()	取得某像素的颜色索引值
+imagecolorclosest()	取得与指定的颜色最接近的颜色的索引值
+imagecolorclosestalpha()	取得与指定的颜色加透明度最接近的颜色的索引
+imagecolorclosesthwb()	取得与指定的颜色最接近的色度的黑白色的索引
+imagesx() 、imagesy()	获取图像宽度与高度
+
+imagecreatefromstring()  从一个字符串创建图片
+file_get_content() 从一个路径获取信息

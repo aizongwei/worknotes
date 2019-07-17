@@ -1,0 +1,143 @@
+wxml:
+
+<view class="pjxxl">
+  <view class="pjname">星级</view>
+  <view class="pjxx" wx:for="{{stars}}">
+    <view bindtap="select" data-type="xj" data-key="{{item+0.5}}" class="{{(item+0.5)<=status['xj']?'pjbx_l_h':'pjbx_l'}}"></view>
+    <view bindtap="select" data-type="xj" data-key="{{item+1}}" class="{{(item+1)<=status['xj']?'pjbx_r_h':'pjbx_r'}}"></view>
+  </view>
+  <view class="pjfs"><text decode="true">{{pjfs['xj']}}&nbsp;</text>分</view>
+</view>
+<view class="pjxxl">
+  <view class="pjname">{{pjlx}}</view>
+  <view class="pjxx" wx:for="{{stars}}">
+    <view bindtap="select" data-type="wl" data-key="{{item+0.5}}" class="{{(item+0.5)<=status['wl']?'pjbx_l_h':'pjbx_l'}}"></view>
+    <view bindtap="select" data-type="wl" data-key="{{item+1}}" class="{{(item+1)<=status['wl']?'pjbx_r_h':'pjbx_r'}}"></view>
+  </view>
+  <view class="pjfs"><text decode="true">{{pjfs['wl']}}&nbsp;</text>分</view>
+</view>
+<view class="pjxxl">
+  <view class="pjname">服务</view>
+  <view class="pjxx" wx:for="{{stars}}">
+    <view bindtap="select" data-type="fw" data-key="{{item+0.5}}" class="{{(item+0.5)<=status['fw']?'pjbx_l_h':'pjbx_l'}}"></view>
+    <view bindtap="select" data-type="fw" data-key="{{item+1}}" class="{{(item+1)<=status['fw']?'pjbx_r_h':'pjbx_r'}}"></view>
+  </view>
+  <view class="pjfs"><text decode="true">{{pjfs['fw']}}&nbsp;</text>分</view>
+</view>
+<view class="pjxxl">
+  <view class="pjname">口碑</view>
+  <view class="pjxx" wx:for="{{stars}}">
+    <view bindtap="select" data-type="kb" data-key="{{item+0.5}}" class="{{(item+0.5)<=status['kb']?'pjbx_l_h':'pjbx_l'}}"></view>
+    <view bindtap="select" data-type="kb" data-key="{{item+1}}" class="{{(item+1)<=status['kb']?'pjbx_r_h':'pjbx_r'}}"></view>
+  </view>
+  <view class="pjfs"><text decode="true">{{pjfs['kb']}}&nbsp;</text>分</view>
+</view>
+
+
+
+
+wxss:
+.pjxx {
+    height: 60rpx;
+    position: relative;
+    display:inline-block;
+    margin-left:10rpx;
+    margin-top:30rpx;
+}
+.pjxxl{
+  width:100%;
+  margin-left:33rpx;
+}
+.pjname{
+  float:left;
+  margin-top:35rpx;
+  margin-right:20rpx;
+  min-width:50rpx;
+}
+.pjfs{
+  float:right;
+  margin-top:35rpx;
+  margin-right:55rpx;
+}
+.pjfs text{
+  color:red;
+}
+.pjbx_r{
+  display:inline-block;
+  width:25rpx;
+  height:50rpx;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAflBMVEUAAADc3Nzd3d3b29vb29va2trb29vc3Nzf39/l5eXb29vb29vb29va2trb29vb29vb29vb29vc3Nzc3Nzb29vb29va2trb29va2trb29vc3Nzd3d3c3Nzb29vZ2dnZ2dnc3Nza2trd3d3d3d3b29vf39/f39/c3Nzb29va2tp4sFILAAAAKXRSTlMAVRfztJOFdQ0E/Pno1bymoZhvRe3j383FZUw4MK2tfWVfPjQqKSAdEyAwANoAAADFSURBVCjPjdJXDoMwEEVRU0IJvYSeXt/+NxiwkcKMMMr9QhxZchnB8sVWUbClD8DY4B0Qb7AFwNRqh7Gzlu2JDzr1IOs1nCtONRwp3pOfZmG0rpMlcY252k52jnsxiukQ0BfKq9B2EmOuTjMhM9Y1F3N9sKKdJNkr5GgN5MIiqhV/mJKwz9QH6cm44LumOZSPjBvKFmOo9iVUb6IDZI3pp5BdCbtyaTt93kI1E3zK4s9vnNnEBbAW83+vAG/JWeLRc9rin76eUTXusDSR+AAAAABJRU5ErkJggg==);
+background-size:50rpx 50rpx;
+background-repeat:no-repeat;
+background-position-x: -25rpx;
+background-position-y: 0rpx;
+}
+.pjbx_l{
+  display:inline-block;
+  width:25rpx;
+  height:50rpx;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAflBMVEUAAADc3Nzd3d3b29vb29va2trb29vc3Nzf39/l5eXb29vb29vb29va2trb29vb29vb29vb29vc3Nzc3Nzb29vb29va2trb29va2trb29vc3Nzd3d3c3Nzb29vZ2dnZ2dnc3Nza2trd3d3d3d3b29vf39/f39/c3Nzb29va2tp4sFILAAAAKXRSTlMAVRfztJOFdQ0E/Pno1bymoZhvRe3j383FZUw4MK2tfWVfPjQqKSAdEyAwANoAAADFSURBVCjPjdJXDoMwEEVRU0IJvYSeXt/+NxiwkcKMMMr9QhxZchnB8sVWUbClD8DY4B0Qb7AFwNRqh7Gzlu2JDzr1IOs1nCtONRwp3pOfZmG0rpMlcY252k52jnsxiukQ0BfKq9B2EmOuTjMhM9Y1F3N9sKKdJNkr5GgN5MIiqhV/mJKwz9QH6cm44LumOZSPjBvKFmOo9iVUb6IDZI3pp5BdCbtyaTt93kI1E3zK4s9vnNnEBbAW83+vAG/JWeLRc9rin76eUTXusDSR+AAAAABJRU5ErkJggg==);
+background-size:50rpx 50rpx;
+background-repeat:no-repeat;
+background-position-x: 0rpx;
+background-position-y: 0rpx;
+}
+
+.pjbx_l_h{
+  display:inline-block;
+  width:25rpx;
+  height:50rpx;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAe1BMVEUAAAD/qyz/pyf/qyz/rS3/qy3/qyz/qiz/qyv/nSL/qyz/rC3/rCz/rC3/rS3/qyz/rS3/qiv/qSz/piz/qyz/qyz/qy3/qyz/rCz/qyz/qiv/qiz/rSr/qyr/qy7/rC3/qy3/qyz/rCv/rC3/sC//qy3/qy7/piT/rC3BLf7YAAAAKHRSTlMAohbz57STdVUE/Png1cNvZTEdDu26rZiETEZANynPyqmZiIZ9X1gMNkIGbgAAAMZJREFUKM+N0tcSgjAQheGEIiAdRIpgL+f9n1AMOLArYfwv+YbJziaC5Ym1Qn9NO+C5whsgWmETgKHVGn13LdsftnSaQ9VqOB5YajgceEs+Go2bONfLuThh7GjLTeUkbmP0DH2WWoW2vehzdFoKlbussRhr/QWtp+kzi6OZkoWFVAN+MTvCHlMPpI7xgU9Nq/hCaBEbnDGGtt8JM6IpVFHmSagehB31a6KGVCuSP6+sMKbnjICwD9OdHRUA+ZxL+RLzbrb4pzc1jTS2tdO5tQAAAABJRU5ErkJggg==);
+background-size:50rpx 50rpx;
+background-repeat:no-repeat;
+background-position-x: 0rpx;
+background-position-y: 0rpx;
+}
+
+.pjbx_r_h{
+  display:inline-block;
+  width:25rpx;
+  height:50rpx;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAe1BMVEUAAAD/qyz/pyf/qyz/rS3/qy3/qyz/qiz/qyv/nSL/qyz/rC3/rCz/rC3/rS3/qyz/rS3/qiv/qSz/piz/qyz/qyz/qy3/qyz/rCz/qyz/qiv/qiz/rSr/qyr/qy7/rC3/qy3/qyz/rCv/rC3/sC//qy3/qy7/piT/rC3BLf7YAAAAKHRSTlMAohbz57STdVUE/Png1cNvZTEdDu26rZiETEZANynPyqmZiIZ9X1gMNkIGbgAAAMZJREFUKM+N0tcSgjAQheGEIiAdRIpgL+f9n1AMOLArYfwv+YbJziaC5Ym1Qn9NO+C5whsgWmETgKHVGn13LdsftnSaQ9VqOB5YajgceEs+Go2bONfLuThh7GjLTeUkbmP0DH2WWoW2vehzdFoKlbussRhr/QWtp+kzi6OZkoWFVAN+MTvCHlMPpI7xgU9Nq/hCaBEbnDGGtt8JM6IpVFHmSagehB31a6KGVCuSP6+sMKbnjICwD9OdHRUA+ZxL+RLzbrb4pzc1jTS2tdO5tQAAAABJRU5ErkJggg==);
+background-size:50rpx 50rpx;
+background-repeat:no-repeat;
+background-position-x: -25rpx;
+background-position-y: 0rpx;
+}
+
+js:
+Page({
+    data: {
+        stars: [ 0, 1, 2, 3, 4 ],
+        pjlx:"",
+        pjtyp:'',
+        status:{
+          'xj':0,
+          'wl':0,
+          'fw':0,
+          'kb':0,
+        },
+        pjfs:{
+          'xj':0,
+          'wl':0,
+          'fw':0,
+          'kb':0,
+        },
+    },
+    select: function(t) {
+      var a = this;
+      var pjfs=0;
+      var pjtype = t.currentTarget.dataset.type;
+      if (a.data.pjfs[pjtype]===t.currentTarget.dataset.key){
+        pjfs = a.data.pjfs[pjtype]-0.5;
+      }else{
+        pjfs = t.currentTarget.dataset.key;
+      }
+      a.data.pjfs[pjtype] = pjfs;
+      a.data.status[pjtype] = pjfs;
+      a.setData({
+        status: a.data.status,
+        pjfs:a.data.pjfs,
+      });
+    },
+})

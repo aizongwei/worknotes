@@ -1,0 +1,77 @@
+//会员推广二维码
+public function doPageMewm(){
+	global $_W,$_GPC;
+	if(!isset($_GPC['user_id'])){
+		exit;
+	}
+	$user_id=$_GPC['user_id'];
+	$userinfo=pdo_get('cjdc_user',array('id'=>$user_id),array('id','name','img'));
+	if($userinfo!=null&&$userinfo['id']!=null){
+		$access_token = $this->getaccess_token($_W);
+		$url = "https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" . $access_token . "";
+	    $data = array(
+	        "scene" => "parent_id=".$user_id,
+	        "page" => "zh_cjdianc/pages/index/index",
+	        "width" => 400
+	        );
+	     $data = json_encode($data);          
+	     $img = $this->send($url,$data);
+	     $ewminfo=getimagesizefromstring($img);
+	     if(!empty($imginfo)){
+		    	preg_match('/\/jpg$|\/jpeg$/',$ewminfo['mime'],$ewmjpeg);
+		    	preg_match('/\/png$/',$ewminfo['mime'],$ewmpng);
+		 }
+	    if(!empty($ewmjpeg)){
+	    	$wname = $user_id.".jpeg";
+	    }else if(!empty($ewmpng)){
+	    	$wname = $user_id.".png";
+	    }else{
+	    	$wname = $user_id.".jpg";
+	    }
+	    //  $img = base64_encode($img);
+	    //  $base64_image_content = "data:image/jpeg;base64," . $img;
+	    // if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $base64_image_content, $result)) {
+	    //     $new_file = IA_ROOT . "/addons/zh_cjdianc/img/".$user_id."/member/";
+	    //     if (!file_exists($new_file)) {
+	    //         //检查是否有该文件夹，如果没有就创建，并给予最高权限
+	    //         mkdir($new_file, 0777,true);
+	    //     }
+	    //     $new_file = $new_file . $wname;
+	    //     file_put_contents($new_file, base64_decode(str_replace($result[1], '', $base64_image_content)));
+	    // }
+	    $logo=file_get_contents($userinfo['img']);
+	    if($logo){	    
+	 		$logo=imagecreatefromstring($logo);
+	 		$ewm=imagecreatefromstring($img);
+		    $logox=imagesx($logo);
+		    $logoy=imagesy($logo);
+		    $ewmx=imagesx($ewm);
+		    $ewmy=imagesy($ewm);
+		    $x=$logox>$ewmx?$logox:$ewmx;
+		    $y=$logoy+$ewmy;
+		    $cv_width=375;
+		    $cv_height=623;
+		    $logo_width=280;
+		    $logo_height=280;
+		    $ewm_width=260;
+		    $ewm_height=260;
+		    $canvas=imagecreatetruecolor($cv_width,$cv_height);
+		    $cv_left=47.5;
+		    $cv_top=50;
+			$black = imagecolorallocate($canvas, 0, 0, 0);
+			$white = imagecolorallocate($canvas, 255, 255, 255);
+			imagefill($canvas,0,0,$white);
+			imagecopyresized($canvas,$logo,$cv_left,$cv_top,0,0,$logo_width,$logo_height,$logox,$logoy);
+			imagecopyresized($canvas,$ewm,$cv_left,$cv_top+$logo_height+30,0,0,$ewm_width,$ewm_height,$ewmx,$ewmy);
+			//imagettftext($canvas,20,0,100,20,$black,IA_ROOT."/addons/zh_cjdianc/simkai.ttf",$userinfo['name']);
+			//header("content-type:image/png");
+			$new_file = IA_ROOT . "/addons/zh_cjdianc/img/".$user_id."/member/".$wname;
+			imagejpeg($canvas,$new_file);
+			//echo $_W['siteroot']."addons/zh_cjdianc/img/".$user_id."/".$store_id."/hc/". $number.".jpg";
+			imagedestroy($canvas);
+			$userinfo['tgewm']=$_W['siteroot']."addons/zh_cjdianc/img/".$user_id."/member/" . $wname;
+	   	    echo json_encode($userinfo);exit;
+	   	}
+	}
+	echo 0;
+}

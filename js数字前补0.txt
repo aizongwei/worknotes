@@ -1,0 +1,8 @@
+  num为传入的数字，n为需要的字符长度
+
+1
+return (Array(n).join(0) + num).slice(-n);
+　　例如 我想返回两位数  输入6 然后返回06 就可以这样写：
+
+1
+return (Array(2).join(0) + 6).slice(-2);

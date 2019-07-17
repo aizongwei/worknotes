@@ -1,0 +1,17 @@
+if(file_exists($file)){
+		$image=imagecreatefromjpeg($file);//创建图片
+		$x=imagesx($image);//图片宽
+		$y=imagesy($image);//图片高
+		$canvas=imagecreatetruecolor($x,$y+100);//创建画布
+		$black = imagecolorallocate($canvas, 0, 0, 0);//创建颜色黑色
+		$white = imagecolorallocate($canvas, 255, 255, 255);//创建颜色白色
+		imagefill($canvas,0,0,$white);//背景填充为白色
+		imagecopy($canvas,$image,0,0,0,0,$x,$y);//在画布中画入图片
+		//画文字
+		imagettftext($canvas,20,0,$x/2-10,$y+50,$black,IA_ROOT."/addons/zh_cjdianc/simkai.ttf",$number);
+		//输出图片
+		header("content-type:image/png");
+		imagejpeg($canvas);
+		//销毁图片资源
+		imagedestroy($canvas);
+	}

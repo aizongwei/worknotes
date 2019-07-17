@@ -1,0 +1,23 @@
+saveImage: function (e) {
+    var qc=this;
+    wx.downloadFile({
+      url: qc.data.userinfo.tgewm,
+      success: function (res) {
+        var imageFilePath = res.tempFilePath;
+        if (imageFilePath!=null) {
+          wx.saveImageToPhotosAlbum({
+            filePath: imageFilePath,
+            success: function (data) {
+              wx.showToast({
+                title: "保存成功",
+              })
+            }, fail: function (res) {
+              wx.showToast({
+                title: "保存失败",
+              })
+            }
+          })
+        }
+      },
+    })
+  },

@@ -1,0 +1,27 @@
+二维码容错级别：
+
+     电平L（低） 7％的码字可以被恢复。
+
+     M级（中） 的码字的15％可以被恢复。
+
+     级Q（四分）[ 28 ] 的码字的25％可以被恢复。
+
+     H级（高） 的码字的30％可以被恢复。
+
+<?php
+    include_once 'phpqrcode.php';
+    $value = $_GET['url'];//二维码内容
+    $level = 'H';//容错级别
+    $size = 5;//生成图片大小
+ 
+    //生成二维码图片
+    QRcode::png($value, 'qrcode.png', $level, $size, 2);
+    $QR = 'qrcode.png';//已经生成的原始二维码图
+
+
+    $QR = imagecreatefromstring(file_get_contents($QR));
+    
+    //输出图片
+    Header("Content-type: image/png");
+    ImagePng($QR)
+	
